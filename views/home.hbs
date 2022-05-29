@@ -1,0 +1,12 @@
+<!--Esta info pasa a main.hbs como si fuera un modulo importado-->
+<h1>Hola desde HOME HBS</h1>
+
+<!--Apoyados de un helper de hbs 
+https://handlebarsjs.com/guide/block-helpers.html#simple-iterators
+en este caso interamos para index.js en el app.get de urls -->
+
+<!--Importamos como modulo Card.hbs
+renombramos la prop de this para manejarlo como item en Card.hbs-->
+{{#each urls}}
+	{{> Card item=this}}
+{{/each}}

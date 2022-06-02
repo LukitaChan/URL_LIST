@@ -1,17 +1,21 @@
 const express = require('express');
+const {
+	leerUrls,
+	agregarUrl,
+	eliminarUrl,
+	editarUrlForm,
+	editarUrl,
+	redireccionamiento
+} = require('../controllers/homeControllers');
+const urlValidar = require('../middleware/urlValida');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-	//Aqui nos estamos comunicando con views/home.hbs por medio de main.hbs
-	//simulando una DataBase de urls. Se gestiona en home.hbs.
-	const urls = [
-		{ origin: 'www.google.com', shortUrl: 'abcdefg123' },
-		{ origin: 'www.facebook.com', shortUrl: 'abcdefg456' },
-		{ origin: 'www.instagram.com', shortUrl: 'abcdefg789' },
-		{ origin: 'www.twitter.com', shortUrl: '123456' }
-	];
-	res.render('home', { urls: urls });
-});
+router.get('/', leerUrls);
+router.post('/', urlValidar, agregarUrl);
+router.get('/eliminar/:id', eliminarUrl);
+router.get('/editar/:id', editarUrlForm);
+router.post('/editar/:id', urlValidar, editarUrl);
+router.get('/:shortURL', redireccionamiento);
 
 module.exports = router;
 //Esto se importara a index.js en un midleware.

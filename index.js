@@ -30,6 +30,8 @@ const corsOptions = {
 };
 app.use(cors());
 
+app.set('trust proxy', 1);
+
 //Middleware para crear seciones en el sitio web. Queda almacenada en la memoria de express (memoria).
 app.use(
 	session({

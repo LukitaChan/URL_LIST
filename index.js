@@ -9,6 +9,8 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 //Passport es para autentificaciones (rutas protegidas)
 const passport = require('passport');
+//sanitize
+const mongoSanitize = require('express-mongo-sanitize');
 //middleware para verificar que nuestra info sea de nuestra web (protecciones).
 const csrf = require('csurf');
 //recibe las configuraciones del handlebar.
@@ -24,7 +26,7 @@ const app = express();
 
 //CORS
 const corsOptions = {
-	credentiales: true,
+	credentials: true,
 	origin: process.env.PATHHEROKU || '*',
 	methods: ['GET', 'POST']
 };
@@ -101,6 +103,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //middleware csurf: protecciones.
 app.use(csrf());
+//sanitize
+app.use(mongoSanitize());
 
 //middleware para token (seguridad)
 app.use((req, res, next) => {

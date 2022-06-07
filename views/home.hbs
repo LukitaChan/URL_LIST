@@ -1,4 +1,5 @@
 <!--Esta info pasa a main.hbs como si fuera un modulo importado-->
+<div class="container">
 <h1>Agregue URLs</h1>
 <!-- Llamamos al componente Form.hbs -->
 {{> Form}}
@@ -12,3 +13,5 @@ renombramos la prop de this para manejarlo como item en Card.hbs-->
 {{#each urls}}
 	{{> Card item=this}}
 {{/each}}
+
+</div>

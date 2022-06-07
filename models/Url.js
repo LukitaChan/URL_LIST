@@ -12,6 +12,12 @@ const urlSchema = new Schema({
 		type: String,
 		unique: true,
 		required: true
+	},
+	user: {
+		type: Schema.Types.ObjectId,
+		//User.js es el modelo
+		ref: 'User',
+		required: true
 	}
 });
 

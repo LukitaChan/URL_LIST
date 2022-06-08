@@ -1,6 +1,7 @@
 const express = require('express');
 //Modulo de express para seciones.
 const session = require('express-session');
+require('dotenv').config();
 //Flash es un tipo de secion que solo vive una vez.
 const flash = require('connect-flash');
 //MongoDB session store for Connect and Express written in Typescript.
@@ -17,7 +18,6 @@ const csrf = require('csurf');
 const { create } = require('express-handlebars');
 
 const User = require('./models/User.js');
-require('dotenv').config();
 //conectamos la db.js con mongoose a index
 //require('./database/db.js');   Ajuste.
 const clientDB = require('./database/db');
@@ -32,7 +32,7 @@ const corsOptions = {
 };
 app.use(cors());
 
-//app.set('trust proxy', 1);
+app.set('trust proxy', 1);
 
 //Middleware para crear seciones en el sitio web. Queda almacenada en la memoria de express (memoria).
 app.use(

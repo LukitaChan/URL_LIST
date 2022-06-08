@@ -1,23 +1,25 @@
 const express = require('express');
 //Modulo de express para seciones.
 const session = require('express-session');
-require('dotenv').config();
-//Flash es un tipo de secion que solo vive una vez.
-const flash = require('connect-flash');
 //MongoDB session store for Connect and Express written in Typescript.
 const MongoStore = require('connect-mongo');
-//Acceso de dominios a la web
-const cors = require('cors');
+//Flash es un tipo de secion que solo vive una vez.
+const flash = require('connect-flash');
 //Passport es para autentificaciones (rutas protegidas)
 const passport = require('passport');
 //sanitize
 const mongoSanitize = require('express-mongo-sanitize');
-//middleware para verificar que nuestra info sea de nuestra web (protecciones).
-const csrf = require('csurf');
+//Acceso de dominios a la web
+const cors = require('cors');
 //recibe las configuraciones del handlebar.
 const { create } = require('express-handlebars');
+//middleware para verificar que nuestra info sea de nuestra web (protecciones).
+const csrf = require('csurf');
 
-const User = require('./models/User.js');
+const User = require('./models/User');
+
+require('dotenv').config();
+
 //conectamos la db.js con mongoose a index
 //require('./database/db.js');   Ajuste.
 const clientDB = require('./database/db');
